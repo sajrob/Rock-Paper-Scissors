@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+
+    let values = ["rock", "paper", "scissors"];
+
+    function computerPlay() {
+      return values[Math.floor(Math.random() * values.length)];
+    }
+
+    let playerSelection = prompt("Rock, paper or scissors?");
+    const computerSelection = computerPlay();
+
+    alert("You chose " + playerSelection);
+    alert("cpu chose " + computerSelection);
+
+    alert(playRound(playerSelection, computerSelection))
+
+
+    //plays round of RPS
+    function playRound(playerSelection, computerSelection) {
+      if (playerSelection === computerSelection) {
+        alert("It's a draw!");
+
+      } else
+      if (playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "scissors" && computerSelection == "paper" || playerSelection == "paper" && computerSelection == "rock") {
+        //playerScore++;
+        alert("You win! " + playerSelection + " beats " + computerSelection);
+
+      } else {
+        //computerScore++;
+        alert("You Lose! " + computerSelection + "beats " + playerSelection);
+
+      }
+
+
+    }
+    
+  </script>
+
+</body>
+
+</html>
