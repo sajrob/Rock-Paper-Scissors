@@ -9,17 +9,26 @@
 <body>
 
   <script type="text/javascript">
-
     let values = ["rock", "paper", "scissors"];
 
+
+    // computer generates random a choice
     function computerPlay() {
       return values[Math.floor(Math.random() * values.length)];
     }
-
-    let playerSelection = prompt("Rock, paper or scissors?");
     const computerSelection = computerPlay();
 
-    alert("You chose " + playerSelection);
+
+    // player chooses
+    let playerSelection = prompt("Rock, paper or scissors?");
+    playerSelection = playerSelection.toLowerCase(); //converts the input to lowercase
+    // checks the user input the valid values
+    if (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
+      alert("Invalid choice, you entered = " + playerSelection + "\nPlease enter rock paper or scissors");
+    } else {
+      alert("Valid choice. You chose " + playerSelection);
+    }
+
     alert("cpu chose " + computerSelection);
 
     alert(playRound(playerSelection, computerSelection))
@@ -43,7 +52,6 @@
 
 
     }
-
   </script>
 
 </body>
