@@ -9,7 +9,14 @@
 <body>
 
   <script type="text/javascript">
+    // LIST OF THINGS NEEDS DOING:
+    // 1) work is being done on game()
+
+
     let values = ["rock", "paper", "scissors"];
+    var playerPoints = 0
+    var computerPoints = 0
+    var tiePoints = 0
 
 
     // computer generates random a choice
@@ -17,40 +24,70 @@
       return values[Math.floor(Math.random() * values.length)];
     }
     const computerSelection = computerPlay();
+    const playerSelection = playerChoice();
 
 
     // player chooses
-    let playerSelection = prompt("Rock, paper or scissors?");
-    playerSelection = playerSelection.toLowerCase(); //converts the input to lowercase
-    // checks the user input the valid values
-    
-    if (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
-      alert("Invalid choice, you entered = " + playerSelection + "\nPlease enter rock paper or scissors");
-    } else {
-      alert("Valid choice. You chose " + playerSelection);
+    function playerChoice() {
+      let input = prompt("Rock, paper or scissors?");
+      input = input.toLowerCase(); //converts the input to lowercase
+
+      // checks the user input the valid values
+      while (input != "rock" && input != "paper" && input != "scissors") {
+        alert("ERROR! You entered = " + input + "\nPlease enter rock paper or scissors.")
+        input = prompt("Rock, paper or scissors?");
+      }
+
+      alert("Valid choice. You chose " + input)
+
+      alert("cpu chose " + computerSelection)
+      return input;
     }
 
-    alert("cpu chose " + computerSelection);
-
-    alert(playRound(playerSelection, computerSelection))
+    // alert(playRound(playerSelection, computerSelection))
+    game()
 
 
     //plays round of RPS
     function playRound(playerSelection, computerSelection) {
+      alert("round starts")
+
+
+      alert("eval begins")
       if (playerSelection === computerSelection) {
-        alert("It's a draw!");
+        tiePoints++;
+        alert("It's a DRAW!")
 
       } else
       if (playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "scissors" && computerSelection == "paper" || playerSelection == "paper" && computerSelection == "rock") {
-        //playerScore++;
-        alert("You win! " + playerSelection + " beats " + computerSelection);
+        alert("You WIN! " + playerSelection + " beats " + computerSelection)
+        playerPoints++;
 
       } else {
-        //computerScore++;
-        alert("You Lose! " + computerSelection + " beats " + playerSelection);
+        alert("You LOSE! " + computerSelection + " beats " + playerSelection)
+        computerPoints++;
+      }
+      alert("End of ")
 
+    }
+
+
+
+    function game() {
+      // Execute game 5 times
+      for (let i = 1; i < 6; i++) {
+        playRound(playerSelection, computerSelection)
+        alert("Round " + i)
+        // playerChoice()
       }
 
+      if (playerPoints > computerPoints) {
+        alert("you won");
+      } else if (playerPoints < computerPoints) {
+        alert("computer won");
+      } else alert("it's a draw");
+
+      alert("The final score is Player: " + playerPoints + "\nCPU: " + computerPoints)
 
     }
   </script>
