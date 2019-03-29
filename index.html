@@ -12,6 +12,8 @@
     // LIST OF THINGS NEEDS DOING:
     // 1) work on a game of 5 rounds
 
+    //credits to LIz for helping with the psudocode to build game()  xx
+
 
     let values = ["rock", "paper", "scissors"];
     var playerPoints = 0
@@ -19,41 +21,33 @@
     var tiePoints = 0
 
 
-    // computer generates random a choice
-    function computerPlay() {
-      return values[Math.floor(Math.random() * values.length)];
-    }
-    var computerSelection = computerPlay();
-    var playerSelection = playerChoice();
-
-
-    // player chooses
-    function playerChoice() {
-      let input = prompt("Rock, paper or scissors?");
-      input = input.toLowerCase(); //converts the input to lowercase
-
-      // checks the user input the valid values
-      while (input != "rock" && input != "paper" && input != "scissors") {
-        alert("ERROR! You entered = " + input + "\nPlease enter rock paper or scissors.")
-        input = prompt("Rock, paper or scissors?");
-      }
-
-      alert("Valid choice. You chose " + input)
-
-      alert("cpu chose " + computerSelection)
-      return input;
-    }
-
-    // alert(playRound(playerSelection, computerSelection))
     game()
 
 
     //plays round of RPS
-    function playRound(playerSelection, computerSelection) {
-      alert("round starts")
+    function playRound() {
 
 
-      alert("eval begins")
+      alert("A new round starts")
+
+      // computer chooses randomly
+      computerSelection = values[Math.floor(Math.random() * values.length)];
+
+      // player chooses
+      let playerSelection = prompt("Rock, paper or scissors?");
+      playerSelection = playerSelection.toLowerCase(); //converts the playerSelection to lowercase
+
+      // checks the user playerSelection the valid values
+      while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
+        alert("ERROR! You entered = " + playerSelection + "\nPlease enter rock paper or scissors.")
+        playerSelection = prompt("Rock, paper or scissors?");
+      }
+
+      // checks players playerSelection
+      alert("Valid choice. You chose " + playerSelection)
+      alert("cpu chose " + computerSelection)
+
+      // alert("eval begins")
       if (playerSelection === computerSelection) {
         tiePoints++;
         alert("It's a DRAW!")
@@ -67,31 +61,31 @@
         alert("You LOSE! " + computerSelection + " beats " + playerSelection)
         computerPoints++;
       }
-      alert("End of ")
+      alert("End of ...")
 
     }
 
-
-
+    // plays a game of RPS for 5 rounds
     function game() {
-      // Execute game 5 times
-      for (let i = 1; i < 6; i++) {
-        playRound(playerSelection, computerSelection)
-        alert("Round " + i)
-        // playerChoice()
-      }
+     for (let i = 1; i < 6; i++) {
+       playRound()
+       alert("Round " + i)
+     }
+   }
 
-      if (playerPoints > computerPoints) {
-        alert("you won");
-      } else if (playerPoints < computerPoints) {
-        alert("computer won");
-      } else alert("it's a draw");
 
-      alert("The final score is Player: " + playerPoints + "\nCPU: " + computerPoints)
+        if (playerPoints > computerPoints) {
+          alert("you won the match");
+        } else if (playerPoints < computerPoints) {
+          alert("computer won the match");
+        } else alert("it's a draw, no one wins");
 
-    }
+        alert("The final score is Player: " + playerPoints + "| CPU: " + computerPoints "\nDraw: " + tiePoints)
+
   </script>
 
 </body>
 
 </html>
+
+
