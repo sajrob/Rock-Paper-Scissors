@@ -28,7 +28,7 @@
     function playRound() {
 
 
-      alert("A new round starts")
+      alert("round starts")
 
       // computer chooses randomly
       computerSelection = values[Math.floor(Math.random() * values.length)];
@@ -46,6 +46,7 @@
       // checks players playerSelection
       alert("Valid choice. You chose " + playerSelection)
       alert("cpu chose " + computerSelection)
+
 
       // alert("eval begins")
       if (playerSelection === computerSelection) {
@@ -65,8 +66,9 @@
 
     }
 
-    // plays a game of RPS for 5 rounds
+
     function game() {
+     // Execute game 5 times
      for (let i = 1; i < 6; i++) {
        playRound()
        alert("Round " + i)
@@ -75,12 +77,12 @@
 
 
         if (playerPoints > computerPoints) {
-          alert("you won the match");
+          alert("you won");
         } else if (playerPoints < computerPoints) {
-          alert("computer won the match");
-        } else alert("it's a draw, no one wins");
+          alert("computer won");
+        } else alert("it's a draw");
 
-        alert("The final score is Player: " + playerPoints + "| CPU: " + computerPoints "\nDraw: " + tiePoints)
+        // alert("The final score is Player: " + playerPoints + "| CPU: " + computerPoints "\nDraw: " + tiePoints)
 
   </script>
 
