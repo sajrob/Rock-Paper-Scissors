@@ -9,9 +9,7 @@
 <body>
 
   <script type="text/javascript">
-    // LIST OF THINGS NEEDS DOING:
-    // 1) work on a game of 5 rounds
-
+    //game of rock paper scissors for the Odin project C/O Microverse precourse programe.
     //credits to LIz for helping with the psudocode to build game()  xx
 
 
@@ -20,13 +18,14 @@
     var computerPoints = 0
     var tiePoints = 0
 
+    alert("Welcome! \nLet's play a game of Rock Paper Scissors \nPress OK to start")
+
 
     game()
 
 
     //plays round of RPS
     function playRound() {
-
 
       alert("round starts")
 
@@ -37,7 +36,7 @@
       let playerSelection = prompt("Rock, paper or scissors?");
       playerSelection = playerSelection.toLowerCase(); //converts the playerSelection to lowercase
 
-      // checks the user playerSelection the valid values
+      // checks that the user's playerSelection is valid and compares to 'values'
       while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
         alert("ERROR! You entered = " + playerSelection + "\nPlease enter rock paper or scissors.")
         playerSelection = prompt("Rock, paper or scissors?");
@@ -52,18 +51,19 @@
       if (playerSelection === computerSelection) {
         tiePoints++;
         alert("It's a DRAW!")
-
+  
       } else
       if (playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "scissors" && computerSelection == "paper" || playerSelection == "paper" && computerSelection == "rock") {
         alert("You WIN! " + playerSelection + " beats " + computerSelection)
         playerPoints++;
-
+  
       } else {
         alert("You LOSE! " + computerSelection + " beats " + playerSelection)
         computerPoints++;
       }
-      alert("End of ...")
 
+      alert("End of ...")
+  
     }
 
 
@@ -73,16 +73,16 @@
        playRound()
        alert("Round " + i)
      }
+     alert("Match over")
    }
 
-
-        if (playerPoints > computerPoints) {
-          alert("you won");
+   if (playerPoints > computerPoints) {
+          alert("You won!");
         } else if (playerPoints < computerPoints) {
-          alert("computer won");
+          alert("Computer won");
         } else alert("it's a draw");
 
-        // alert("The final score is Player: " + playerPoints + "| CPU: " + computerPoints "\nDraw: " + tiePoints)
+   alert("The final score is Player: " + playerPoints + "| CPU: " + computerPoints + "\nDraw: " + tiePoints)
 
   </script>
 
